@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/secure_api}
+    username: ${DB_USER:secure_api}
+    password: ${DB_PASS:secure_api}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+app:
+  security:
+    issuer: ${JWT_ISSUER:secure-api-starter}
+    audience: ${JWT_AUDIENCE:secure-api-clients}
+    accessTtlSeconds: ${JWT_ACCESS_TTL_SECONDS:900}    # 15m
+    refreshTtlSeconds: ${JWT_REFRESH_TTL_SECONDS:1209600} # 14d
+    # PROD: pasás PEM en base64 por env. DEV: si no están, el sistema genera keys efímeras al arrancar.
+    privateKeyPemB64: ${JWT_PRIVATE_KEY_PEM_B64:}
+    publicKeyPemB64: ${JWT_PUBLIC_KEY_PEM_B64:}
