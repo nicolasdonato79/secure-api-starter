@@ -1,8 +1,8 @@
 services:
   postgres:
-    image: postgres:16
+    image: postgres:16-alpine
     container_name: secure_api_postgres
-    command: ["postgres", "-c", "timezone=UTC"]
+    #command: ["postgres", "-c", "timezone=UTC"]
     environment:
       POSTGRES_DB: secure_api
       POSTGRES_USER: secure_api

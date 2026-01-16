@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/README.md">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/README.md" />
+              <option name="originalContent" value="# secure-api-starter&#10;&#10;Backend Spring Boot listo para producción con:&#10;- JWT asimétrico RS512 (RSA + SHA-512)&#10;- RBAC (ROLE_ADMIN / ROLE_USER)&#10;- PostgreSQL + Flyway&#10;- Actuator health/info&#10;- Docker compose para DB&#10;&#10;## Requisitos&#10;- Java 17&#10;- Maven (o ./mvnw)&#10;- Docker&#10;&#10;## Levantar DB&#10;```bash&#10;docker compose -f docker/docker-compose.yml up -d&#10;" />
+              <option name="updatedContent" value="# secure-api-starter&#10;&#10;Backend Spring Boot listo para producción con:&#10;- JWT asimétrico RS512 (RSA + SHA-512)&#10;- RBAC (ROLE_ADMIN / ROLE_USER)&#10;- PostgreSQL + Flyway&#10;- Actuator health/info&#10;- Docker compose para DB&#10;&#10;## Requisitos&#10;- Java 17&#10;- Maven (o ./mvnw)&#10;- Docker&#10;&#10;## Levantar DB&#10;```bash&#10;docker compose -f docker/docker-compose.yml up -d&#10;```&#10;&#10;## Zona horaria del host (TZ)&#10;Si la zona horaria del host no coincide con la del contenedor, PostgreSQL puede comportarse diferente.&#10;Esta configuración permite que el contenedor use la misma zona horaria del servidor pasando la variable de entorno `TZ`.&#10;&#10;- Linux (bash): exporta `TZ` antes de levantar el compose:&#10;&#10;```bash&#10;export TZ=&quot;$(cat /etc/timezone 2&gt;/dev/null || echo UTC)&quot;&#10;docker compose -f docker/docker-compose.yml up -d&#10;```&#10;&#10;- systemd (ejecución en un servicio): asegúrate de exportar la variable en el entorno del servicio o usar `Environment=TZ=America/Argentina/Buenos_Aires`.&#10;&#10;- Windows (cmd.exe): puedes definirla para la sesión actual o de forma persistente:&#10;&#10;```bat&#10;:: Sesión actual (solo esta ventana)&#10;set TZ=America/Argentina/Buenos_Aires&#10;docker compose -f docker/docker-compose.yml up -d&#10;&#10;:: Persistente (requiere reinicio de la sesión o del sistema)&#10;setx TZ &quot;America/Argentina/Buenos_Aires&quot;&#10;```&#10;&#10;Notas:&#10;- En hosts Linux reales puedes montar `/etc/localtime` y `/etc/timezone` en el contenedor para forzar una coincidencia exacta (ver `docker/docker-compose.yml`):&#10;  - /etc/localtime:/etc/localtime:ro&#10;  - /etc/timezone:/etc/timezone:ro&#10;- En Docker Desktop (Windows/Mac) no siempre existe `/etc/localtime`, por eso la opción portable es usar `TZ`." />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
