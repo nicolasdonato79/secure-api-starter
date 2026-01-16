@@ -3,9 +3,10 @@ server:
 
 spring:
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/secure_api}
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/secure_api?options=-c%20TimeZone%3DUTC}
     username: ${DB_USER:secure_api}
     password: ${DB_PASS:secure_api}
+
   jpa:
     hibernate:
       ddl-auto: validate
@@ -14,6 +15,14 @@ spring:
         format_sql: true
   flyway:
     enabled: true
+  logging:
+    level:
+      com.zaxxer.hikari: DEBUG
+      org.springframework.jdbc.datasource: DEBUG
+      org.flywaydb: DEBUG
+  docker:
+    compose:
+      enabled: false
 
 management:
   endpoints:
