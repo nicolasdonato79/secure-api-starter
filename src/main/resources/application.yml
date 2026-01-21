@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 
 spring:
   datasource:
@@ -19,6 +19,7 @@ spring:
     level:
       com.zaxxer.hikari: DEBUG
       org.springframework.jdbc.datasource: DEBUG
+      org.springframework.security: DEBUG
       org.flywaydb: DEBUG
   docker:
     compose:

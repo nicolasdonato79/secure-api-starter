@@ -20,16 +20,25 @@ public class UserController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<User>> list() {
         return ResponseEntity.ok(userService.list());
     }
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<User> create(@RequestBody Map<String, String> body) {
         String username = body.get("username");
         String password = body.get("password");
         return ResponseEntity.ok(userService.createUser(username, password));
     }
+
+    @PatchMapping("")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<User> update(@RequestBody Map<String, String> body) {
+        String username = body.get("username");
+        boolean enabled = Boolean.parseBoolean(body.get("enabled"));
+        return ResponseEntity.ok(userService.changeEnableUser(username, enabled));
+    }
 }
+

@@ -1,0 +1,10 @@
+-- Roles ya deberían existir (V2)
+-- Insert users (passwords HASHEADAS, no en texto plano)
+
+-- EJEMPLO: si usás bcrypt, generá los hashes y pegarlos acá
+insert into users (id, username, password_hash, enabled, created_at)
+values
+  (gen_random_uuid(), 'admin', '$2a$10$REEMPLAZAR_HASH', true, now()),
+  (gen_random_uuid(), 'user1', '$2a$10$REEMPLAZAR_HASH', true, now()),
+  (gen_random_uuid(), 'user2', '$2a$10$REEMPLAZAR_HASH', false, now())
+on conflict (username) do nothing;

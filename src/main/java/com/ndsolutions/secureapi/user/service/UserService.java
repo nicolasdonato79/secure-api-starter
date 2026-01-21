@@ -53,4 +53,15 @@ public class UserService {
         u.getRoles().add(userRole);
         return userRepository.save(u);
     }
+
+    @Transactional
+    public User changeEnableUser(String userName, boolean enabled){
+        return userRepository.findByUsername(userName)
+                .map(u -> {
+                    u.setEnabled(enabled);
+                    return userRepository.save(u);
+                })
+                .orElseThrow(() -> new java.util.NoSuchElementException("User not found: " + userName));
+    }
+
 }
